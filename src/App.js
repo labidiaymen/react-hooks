@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TextField from '@material-ui/core/TextField';
 
 function useFormInput(init_value) {
   const [value, setValue] = useState(init_value);
@@ -19,12 +20,10 @@ function LoginForm() {
   return (
     <div>
       <div className="form-control">
-        <label> Name : </label>
-        <input {...name} />
+        <TextField label="Name"   {...name} />
       </div>
       <div className="form-control">
-        <label> Lastname : </label>
-        <input {...lastName} />
+        <TextField label="Lastname"  {...lastName} />
       </div>
       <div>
         {name.value}  {lastName.value}
