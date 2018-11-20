@@ -7,7 +7,8 @@ class App extends Component {
     super();
     this.state = {
       name: '',
-      lastName: ''
+      lastName: '',
+      pageTitle: 'React Hooks'
     };
 
   }
@@ -19,9 +20,24 @@ class App extends Component {
 
   handleLastNameChange(e) {
     this.setState({
-      lastNamen: e.target.value
+      lastName: e.target.value
     })
   }
+
+  handleTitleChange(e) {
+    this.setState({
+      pageTitle: e.target.value
+    })
+  }
+
+  componentDidMount() {
+    document.title = this.state.pageTitle;
+  }
+
+  componentDidUpdate() {
+    document.title = this.state.pageTitle;
+  }
+
   render() {
 
     return (
@@ -34,6 +50,10 @@ class App extends Component {
         </div>
         <div>
           {this.state.name}  {this.state.lastName}
+        </div>
+
+        <div className="form-control">
+          <TextField label="Page Title" onChange={this.handleTitleChange.bind(this)} />
         </div>
       </div>
     );

@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextField from '@material-ui/core/TextField';
@@ -17,6 +17,12 @@ function useFormInput(init_value) {
 function LoginForm() {
   const name = useFormInput('');
   const lastName = useFormInput('');
+  const pageTitle = useFormInput('');
+
+  useEffect(() => {
+    document.title = pageTitle.value;
+  });
+
   return (
     <div>
       <div className="form-control">
@@ -27,6 +33,10 @@ function LoginForm() {
       </div>
       <div>
         {name.value}  {lastName.value}
+      </div>
+
+      <div className="form-control">
+        <TextField label="Page Title"  {...pageTitle} />
       </div>
     </div>
   );
